@@ -1,4 +1,4 @@
-# ficium-contract
+# ficium-integration
 
 The only interface between the Ficium borrower app and the Ficium institution app. Both apps import this package, validate every event they send or receive against it, and sign and verify with the same code.
 
@@ -33,7 +33,7 @@ Design and migration plan: *Ficium integration contract v1* (Claude Doc).
 Python:
 
 ```bash
-pip install "ficium-contract @ git+https://github.com/Ficium001/ficium-contract@v1.0.0"
+pip install "ficium-contract @ git+https://github.com/Ficium001/ficium-integration@v1.0.0"
 ```
 
 ```python
@@ -46,7 +46,7 @@ fc.verify(header, raw_body, [current_key, previous_key])
 TypeScript:
 
 ```bash
-npm install github:Ficium001/ficium-contract#v1.0.0
+npm install github:Ficium001/ficium-integration#v1.0.0
 ```
 
 ```ts
