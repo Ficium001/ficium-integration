@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ficium-contract"
-version = "1.4.0"
+version = "1.5.0"
 description = "Ficium integration contract v1: event schemas, validation and signing"
 requires-python = ">=3.12"
 dependencies = ["jsonschema>=4.18", "referencing>=0.30", "rfc3339-validator>=0.1.4", "jsonschema[format-nongpl]>=4.18"]

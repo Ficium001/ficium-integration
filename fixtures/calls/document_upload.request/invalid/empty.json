@@ -6,6 +6,7 @@
     "requirement_id": "00000000-0000-4000-8000-000000000040",
     "file_name": "payslips.pdf",
     "mime_type": "application/pdf",
-    "size_bytes": 0
+    "size_bytes": 0,
+    "source": "new"
   }
 }

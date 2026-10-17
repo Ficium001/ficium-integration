@@ -238,8 +238,51 @@
           ],
           "maxLength": 500,
           "description": "Why a document was rejected or waived, written for the borrower"
+        },
+        "document_type": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/document_type"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Set when the bank wants a specific kind of document; lets the borrower reuse a matching one."
+        },
+        "max_age_days": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 3650,
+          "description": "Oldest acceptable document, in days, measured from the document's own date (payslip period, statement date). A copy older than this, or whose date is unknown, must be uploaded new."
         }
       }
+    },
+    "document_type": {
+      "type": "string",
+      "description": "What kind of document. Matches the borrower vault's types so the borrower can be offered copies they already hold.",
+      "enum": [
+        "payslip",
+        "employment_letter",
+        "tax_return",
+        "bank_statement",
+        "loan_statement",
+        "credit_card_statement",
+        "title_deed",
+        "valuation_report",
+        "land_registry_extract",
+        "brn_certificate",
+        "audited_accounts",
+        "insurance_policy",
+        "nic",
+        "passport",
+        "birth_certificate",
+        "driving_licence",
+        "other"
+      ]
     }
   }
 }

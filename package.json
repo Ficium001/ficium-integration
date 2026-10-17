@@ -1,6 +1,6 @@
 {
   "name": "@ficium/contract",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Ficium integration contract v1: event schemas, validation and signing",
   "type": "module",
   "main": "ts/dist/index.js",
