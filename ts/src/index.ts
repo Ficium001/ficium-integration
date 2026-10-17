@@ -13,7 +13,7 @@ import addFormatsModule from "ajv-formats";
 const Ajv2020 = (Ajv2020Module as unknown as { default?: typeof Ajv2020Module }).default ?? Ajv2020Module;
 const addFormats = (addFormatsModule as unknown as { default?: typeof addFormatsModule }).default ?? addFormatsModule;
 
-export const VERSION = "1.4.0";
+export const VERSION = "1.5.0";
 export const SIGNATURE_HEADER = "Ficium-Signature";
 export const DEFAULT_TOLERANCE_SECONDS = 300;
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.5.0 — 2026-10-17
+
+Reusing documents the borrower already holds. When a bank requests a document, the borrower either shares a
+matching copy from their vault or uploads a new one.
+
+- Checklist item (`deal_document`): optional `document_type` (aligned with the vault's types) and
+  `max_age_days`. Age is measured from the document's own date (payslip period, statement date). A copy older
+  than `max_age_days`, or whose date is unknown, must be uploaded new.
+- `document_upload.request`: required `source` (`vault` or `new`); `document_date` is required for a vault copy
+  so the institution can check its age too.
+- Nothing implements 1.4.0 yet, so tightening the upload call here breaks no one.
+
 ## 1.4.0 — 2026-10-17
 
 Phase 2: borrowers upload a deal's documents themselves. Only for deals they accepted; files never pass
