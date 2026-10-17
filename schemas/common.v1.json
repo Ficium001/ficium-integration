@@ -72,6 +72,96 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 4000
+    },
+    "benefit": {
+      "type": "object",
+      "description": "A benefit attached to a bid, frozen when the bid was placed. value_amount and value_unit come together; without them the benefit is wording only.",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "value_display": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_guaranteed": {
+          "type": "boolean"
+        },
+        "cat_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value_amount": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "The benefit's value, in value_unit. Decimal fractions like every rate in this contract: a 0.25% rate discount is 0.0025, a 50% fee waiver is 0.5."
+        },
+        "value_unit": {
+          "type": "string",
+          "enum": [
+            "rate_pa",
+            "fee_fraction",
+            "amount"
+          ],
+          "description": "rate_pa: reduction of the yearly rate, as a decimal fraction (0.0025 = 0.25 percentage points). fee_fraction: share of a fee waived, 0 to 1. amount: money in the bid's currency."
+        }
+      },
+      "dependentRequired": {
+        "value_amount": [
+          "value_unit"
+        ],
+        "value_unit": [
+          "value_amount"
+        ]
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "value_unit"
+            ],
+            "properties": {
+              "value_unit": {
+                "const": "rate_pa"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value_amount": {
+                "maximum": 0.1
+              }
+            }
+          },
+          "$comment": "A rate discount above 10 points is a unit error (0.25 sent for 0.25%), not a benefit."
+        },
+        {
+          "if": {
+            "required": [
+              "value_unit"
+            ],
+            "properties": {
+              "value_unit": {
+                "const": "fee_fraction"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value_amount": {
+                "maximum": 1
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }
