@@ -80,30 +80,7 @@
     "benefits": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": [
-          "title"
-        ],
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "value_display": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "is_guaranteed": {
-            "type": "boolean"
-          },
-          "cat_code": {
-            "type": [
-              "string",
-              "null"
-            ]
-          }
-        }
+        "$ref": "../common.v1.json#/$defs/benefit"
       }
     },
     "allocations": {
