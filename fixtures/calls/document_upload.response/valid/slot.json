@@ -1,5 +1,5 @@
 {
   "upload_id": "00000000-0000-4000-8000-000000000050",
-  "upload_url": "https://egwobcajdlragubtkpqp.supabase.co/storage/v1/object/upload/sign/deal-docs/x?token=t",
+  "upload_url": "https://api.portal.example/integration/v1/deal-documents/uploads/00000000-0000-4000-8000-000000000050/content",
   "expires_at": "2026-10-17T09:10:00Z"
 }
