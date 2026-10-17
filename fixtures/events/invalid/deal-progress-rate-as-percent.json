@@ -1,0 +1,52 @@
+{
+  "description": "rates are decimal fractions",
+  "envelope": {
+    "id": "evt_01J9FIXTURE0301",
+    "type": "deal.progress_updated",
+    "version": 1,
+    "source": "institution",
+    "occurred_at": "2026-10-17T09:00:00Z",
+    "aggregate_id": "00000000-0000-4000-8000-000000000030",
+    "sequence": 3,
+    "data": {
+      "pipeline_id": "00000000-0000-4000-8000-000000000030",
+      "request_id": "00000000-0000-4000-8000-000000000001",
+      "bid_id": "00000000-0000-4000-8000-000000000010",
+      "status": "active",
+      "deal": {
+        "amount": 2500000,
+        "rate": 7.25,
+        "term_months": 240
+      },
+      "started_at": "2026-10-10T08:00:00Z",
+      "completed_at": null,
+      "stages": [
+        {
+          "position": 1,
+          "label": "Documents",
+          "status": "completed",
+          "started_at": "2026-10-10T08:00:00Z",
+          "completed_at": "2026-10-12T10:00:00Z",
+          "due_at": null
+        },
+        {
+          "position": 2,
+          "label": "Credit review",
+          "status": "active",
+          "started_at": "2026-10-12T10:00:00Z",
+          "completed_at": null,
+          "due_at": "2026-10-19T10:00:00Z"
+        },
+        {
+          "position": 3,
+          "label": "Final approval",
+          "status": "pending",
+          "started_at": null,
+          "completed_at": null,
+          "due_at": null
+        }
+      ],
+      "updated_at": "2026-10-17T09:00:00Z"
+    }
+  }
+}
