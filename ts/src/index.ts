@@ -13,7 +13,7 @@ import addFormatsModule from "ajv-formats";
 const Ajv2020 = (Ajv2020Module as unknown as { default?: typeof Ajv2020Module }).default ?? Ajv2020Module;
 const addFormats = (addFormatsModule as unknown as { default?: typeof addFormatsModule }).default ?? addFormatsModule;
 
-export const VERSION = "1.2.0";
+export const VERSION = "1.4.0";
 export const SIGNATURE_HEADER = "Ficium-Signature";
 export const DEFAULT_TOLERANCE_SECONDS = 300;
 
@@ -60,6 +60,10 @@ function check(name: string, instance: unknown): void {
 export const validateEvent = (envelope: unknown): void => check("envelope.v1.json", envelope);
 export const validateAcceptanceRequest = (body: unknown): void => check("calls/acceptance.request.v1.json", body);
 export const validateAcceptanceResponse = (body: unknown): void => check("calls/acceptance.response.v1.json", body);
+export const validateDocumentUploadRequest = (body: unknown): void => check("calls/document_upload.request.v1.json", body);
+export const validateDocumentUploadResponse = (body: unknown): void => check("calls/document_upload.response.v1.json", body);
+export const validateDocumentCompleteRequest = (body: unknown): void => check("calls/document_complete.request.v1.json", body);
+export const validateDocumentCompleteResponse = (body: unknown): void => check("calls/document_complete.response.v1.json", body);
 
 function mac(key: Buffer | string, t: number, rawBody: Buffer | string): string {
   return createHmac("sha256", key).update(`${t}.`).update(rawBody).digest("hex");

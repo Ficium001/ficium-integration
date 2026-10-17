@@ -1,0 +1,8 @@
+{
+  "description": "upload URLs must be https",
+  "body": {
+    "upload_id": "00000000-0000-4000-8000-000000000050",
+    "upload_url": "http://example.com/x",
+    "expires_at": "2026-10-17T09:10:00Z"
+  }
+}

@@ -30,7 +30,8 @@
         "bid.updated",
         "bid.withdrawn",
         "pipeline.stage_advanced",
-        "market.intelligence"
+        "market.intelligence",
+        "deal.documents_updated"
       ]
     },
     "version": {
@@ -297,6 +298,28 @@
                 "const": "institution"
               }
             }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "deal.documents_updated"
+          },
+          "version": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "$ref": "events/deal.documents_updated.v1.json"
+          },
+          "source": {
+            "const": "institution"
           }
         }
       }

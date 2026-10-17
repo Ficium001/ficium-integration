@@ -24,6 +24,25 @@ test("acceptance calls", () => {
     assert.throws(() => fc.validateAcceptanceRequest(load(join(fix, "calls/acceptance.request/invalid", f)).body), fc.ContractError);
   for (const f of files("calls/acceptance.response/valid")) fc.validateAcceptanceResponse(load(join(fix, "calls/acceptance.response/valid", f)));
 });
+
+const CALLS: Record<string, (b: unknown) => void> = {
+  "acceptance.request": fc.validateAcceptanceRequest,
+  "acceptance.response": fc.validateAcceptanceResponse,
+  "document_upload.request": fc.validateDocumentUploadRequest,
+  "document_upload.response": fc.validateDocumentUploadResponse,
+  "document_complete.request": fc.validateDocumentCompleteRequest,
+  "document_complete.response": fc.validateDocumentCompleteResponse,
+};
+for (const [name, check] of Object.entries(CALLS)) {
+  test(`call ${name}`, () => {
+    const valid = files(`calls/${name}/valid`);
+    assert.ok(valid.length > 0);
+    for (const f of valid) check(load(join(fix, `calls/${name}/valid`, f)));
+    let inv: string[] = [];
+    try { inv = files(`calls/${name}/invalid`); } catch { inv = []; }
+    for (const f of inv) assert.throws(() => check(load(join(fix, `calls/${name}/invalid`, f)).body), fc.ContractError);
+  });
+}
 for (const v of load(join(fix, "signing-vectors.json")) as Array<{ description: string; key: string; timestamp: number; body: string; header: string }>) {
   test(`signing vector: ${v.description}`, () => {
     assert.equal(fc.sign(Buffer.from(v.body, "utf8"), v.key, v.timestamp), v.header);

@@ -1,0 +1,40 @@
+{
+  "description": "only the institution owns the checklist",
+  "envelope": {
+    "id": "evt_01J9FIXTURE0201",
+    "type": "deal.documents_updated",
+    "version": 1,
+    "source": "borrower",
+    "occurred_at": "2026-10-17T09:00:00Z",
+    "aggregate_id": "00000000-0000-4000-8000-000000000030",
+    "sequence": 1,
+    "data": {
+      "pipeline_id": "00000000-0000-4000-8000-000000000030",
+      "request_id": "00000000-0000-4000-8000-000000000001",
+      "bid_id": "00000000-0000-4000-8000-000000000010",
+      "documents": [
+        {
+          "requirement_id": "00000000-0000-4000-8000-000000000040",
+          "name": "Proof of income",
+          "description": "Last 3 payslips",
+          "provided_by": "borrower",
+          "mandatory": true,
+          "stage_label": "Credit documentation",
+          "status": "rejected",
+          "review_note": "Only 2 payslips; we need 3."
+        },
+        {
+          "requirement_id": "00000000-0000-4000-8000-000000000050",
+          "name": "Proof of address",
+          "description": "Last 3 payslips",
+          "provided_by": "borrower",
+          "mandatory": true,
+          "stage_label": "Credit documentation",
+          "status": "required",
+          "review_note": null
+        }
+      ],
+      "updated_at": "2026-10-17T09:00:00Z"
+    }
+  }
+}

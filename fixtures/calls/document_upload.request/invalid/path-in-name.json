@@ -1,0 +1,11 @@
+{
+  "description": "no path separators in file names",
+  "body": {
+    "pipeline_id": "00000000-0000-4000-8000-000000000030",
+    "anon_borrower_id": "00000000-0000-4000-8000-000000000099",
+    "requirement_id": "00000000-0000-4000-8000-000000000040",
+    "file_name": "../../etc/passwd",
+    "mime_type": "application/pdf",
+    "size_bytes": 482113
+  }
+}
