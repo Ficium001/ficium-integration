@@ -9,6 +9,9 @@ errors = []
 pkg = json.loads((ROOT / "package.json").read_text())["version"]
 py = re.search(r'^version = "([^"]+)"', (ROOT / "pyproject.toml").read_text(), re.M).group(1)
 mod = re.search(r'__version__ = "([^"]+)"', (ROOT / "python/ficium_contract/__init__.py").read_text()).group(1)
+ts = re.search(r'VERSION = "([^"]+)"', (ROOT / "ts/src/index.ts").read_text()).group(1)
+if ts != pkg:
+    errors.append(f"version mismatch: ts VERSION={ts} package.json={pkg}")
 if not (pkg == py == mod):
     errors.append(f"version mismatch: package.json={pkg} pyproject={py} __init__={mod}")
 if pkg.split(".")[0] != "1":

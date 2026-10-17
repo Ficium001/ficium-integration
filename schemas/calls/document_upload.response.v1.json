@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/calls/document_upload.response.v1.json",
+  "title": "POST /integration/v1/deal-documents/uploads 201 response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "upload_id",
+    "upload_url",
+    "expires_at"
+  ],
+  "properties": {
+    "upload_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "upload_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "expires_at": {
+      "$ref": "../common.v1.json#/$defs/timestamp"
+    }
+  }
+}

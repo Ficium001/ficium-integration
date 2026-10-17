@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0 — 2026-10-17
+
+Phase 2: borrowers upload a deal's documents themselves. Only for deals they accepted; files never pass
+through either API.
+
+- Event `deal.documents_updated` (institution → borrower): the deal's full checklist (what's needed, from
+  whom, status, review note), sent whenever it changes. No file names or contents.
+- Call `POST /integration/v1/deal-documents/uploads`: borrower asks for a one-time upload slot for one checklist
+  item (PDF, JPEG or PNG, at most 10 MB); returns an https `upload_url` and its expiry.
+- Call `POST /integration/v1/deal-documents/uploads/{upload_id}/complete`: borrower confirms with the file's
+  SHA-256; returns the item's new state.
+- New event type: receivers ship support before senders emit it (the borrower app upgrades first).
+- Fix: the TypeScript `VERSION` constant said 1.2.0 in 1.3.0; the consistency check now covers it.
+
 ## 1.3.0 — 2026-10-17
 
 - `bid.placed`, `bid.updated`: a benefit may carry its value, so the borrower side can price it. Optional

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/calls/document_upload.request.v1.json",
+  "title": "POST /integration/v1/deal-documents/uploads request body",
+  "description": "Borrower asks for a one-time upload slot for one checklist item of a deal it accepted. The file goes straight to storage at upload_url, never through either API.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pipeline_id",
+    "anon_borrower_id",
+    "requirement_id",
+    "file_name",
+    "mime_type",
+    "size_bytes"
+  ],
+  "properties": {
+    "pipeline_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "anon_borrower_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "requirement_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "file_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[^/\\\\]+$"
+    },
+    "mime_type": {
+      "$ref": "../common.v1.json#/$defs/document_mime_type"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10485760
+    }
+  }
+}

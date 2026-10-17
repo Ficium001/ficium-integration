@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/calls/document_complete.request.v1.json",
+  "title": "POST /integration/v1/deal-documents/uploads/{upload_id}/complete request body",
+  "description": "Borrower confirms the bytes are uploaded. The institution checks the stored file's hash against sha256 before marking the item received.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "upload_id",
+    "pipeline_id",
+    "anon_borrower_id",
+    "sha256"
+  ],
+  "properties": {
+    "pipeline_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "anon_borrower_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "upload_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "sha256": {
+      "$ref": "../common.v1.json#/$defs/sha256"
+    }
+  }
+}

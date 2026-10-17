@@ -17,7 +17,7 @@ from typing import Any, Iterable
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 SIGNATURE_HEADER = "Ficium-Signature"
 DEFAULT_TOLERANCE_SECONDS = 300
@@ -81,6 +81,28 @@ def validate_acceptance_response(body: dict) -> None:
     errs = _errors("calls/acceptance.response.v1.json", body)
     if errs:
         raise ContractError("; ".join(errs))
+
+
+def _check(name: str, body: dict) -> None:
+    errs = _errors(f"calls/{name}.v1.json", body)
+    if errs:
+        raise ContractError("; ".join(errs))
+
+
+def validate_document_upload_request(body: dict) -> None:
+    _check("document_upload.request", body)
+
+
+def validate_document_upload_response(body: dict) -> None:
+    _check("document_upload.response", body)
+
+
+def validate_document_complete_request(body: dict) -> None:
+    _check("document_complete.request", body)
+
+
+def validate_document_complete_response(body: dict) -> None:
+    _check("document_complete.response", body)
 
 
 def sign(raw_body: bytes, key: bytes, timestamp: int | None = None) -> str:

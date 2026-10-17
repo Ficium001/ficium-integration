@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/calls/document_complete.response.v1.json",
+  "title": "POST /integration/v1/deal-documents/uploads/{upload_id}/complete 200 response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pipeline_id",
+    "document"
+  ],
+  "properties": {
+    "pipeline_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "document": {
+      "$ref": "../common.v1.json#/$defs/deal_document"
+    }
+  }
+}

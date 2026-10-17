@@ -41,6 +41,33 @@ def test_acceptance_calls():
         fc.validate_acceptance_response(_load(p))
 
 
+CALLS = {
+    "acceptance.request": fc.validate_acceptance_request,
+    "acceptance.response": fc.validate_acceptance_response,
+    "document_upload.request": fc.validate_document_upload_request,
+    "document_upload.response": fc.validate_document_upload_response,
+    "document_complete.request": fc.validate_document_complete_request,
+    "document_complete.response": fc.validate_document_complete_response,
+}
+
+
+def test_every_call_has_a_validator_and_fixtures():
+    on_disk = {p.stem.removesuffix(".v1") for p in (ROOT / "schemas/calls").glob("*.json")}
+    assert on_disk == set(CALLS)
+    for name in CALLS:
+        assert list((FIX / f"calls/{name}/valid").glob("*.json")), name
+
+
+@pytest.mark.parametrize("name", sorted(CALLS))
+def test_calls(name):
+    check = CALLS[name]
+    for p in (FIX / f"calls/{name}/valid").glob("*.json"):
+        check(_load(p))
+    for p in (FIX / f"calls/{name}/invalid").glob("*.json"):
+        with pytest.raises(fc.ContractError):
+            check(_load(p)["body"])
+
+
 @pytest.mark.parametrize("vec", _load(FIX / "signing-vectors.json"), ids=lambda v: v["description"])
 def test_signing_vectors(vec):
     body, key = vec["body"].encode(), vec["key"].encode()

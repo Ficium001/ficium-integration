@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/events/deal.documents_updated.v1.json",
+  "title": "A deal's document checklist changed",
+  "description": "Phase 2: sent only for deals the borrower accepted. Full state, not a diff: the receiver replaces what it holds. aggregate_id is the pipeline_id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pipeline_id",
+    "request_id",
+    "bid_id",
+    "documents",
+    "updated_at"
+  ],
+  "properties": {
+    "pipeline_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "request_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "bid_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "documents": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "../common.v1.json#/$defs/deal_document"
+      }
+    },
+    "updated_at": {
+      "$ref": "../common.v1.json#/$defs/timestamp"
+    }
+  }
+}

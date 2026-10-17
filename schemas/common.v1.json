@@ -162,6 +162,84 @@
           }
         }
       ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Lower-case hex SHA-256 of the file bytes"
+    },
+    "document_mime_type": {
+      "type": "string",
+      "enum": [
+        "application/pdf",
+        "image/jpeg",
+        "image/png"
+      ]
+    },
+    "deal_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "name",
+        "provided_by",
+        "mandatory",
+        "status"
+      ],
+      "description": "One item of a deal's document checklist. Carries no file names or contents: only what is needed and where it stands.",
+      "properties": {
+        "requirement_id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        },
+        "provided_by": {
+          "type": "string",
+          "enum": [
+            "borrower",
+            "bank",
+            "third_party"
+          ]
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "stage_label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "required",
+            "received",
+            "verified",
+            "rejected",
+            "waived"
+          ]
+        },
+        "review_note": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500,
+          "description": "Why a document was rejected or waived, written for the borrower"
+        }
+      }
     }
   }
 }
