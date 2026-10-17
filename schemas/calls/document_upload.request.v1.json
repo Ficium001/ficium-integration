@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contract.ficium.net/schemas/calls/document_upload.request.v1.json",
   "title": "POST /integration/v1/deal-documents/uploads request body",
-  "description": "Borrower asks for a one-time upload slot for one checklist item of a deal it accepted. The file goes straight to storage at upload_url, never through either API.",
+  "description": "Borrower asks for a one-time upload slot for one checklist item of a deal it accepted. Everything between the two sides goes through the institution's interface API: the file is sent to upload_url (an interface endpoint), never to either side's storage or database.",
   "type": "object",
   "additionalProperties": false,
   "required": [

@@ -16,7 +16,8 @@
     "upload_url": {
       "type": "string",
       "format": "uri",
-      "pattern": "^https://"
+      "pattern": "^https://[^?#]+/integration/v1/deal-documents/uploads/[0-9a-f-]{36}/content$",
+      "description": "PUT /integration/v1/deal-documents/uploads/{upload_id}/content on the institution's interface API. Send the raw file bytes with Content-Type = mime_type and Ficium-Signature computed over those bytes (same scheme and keys as the calls). Never a storage URL."
     },
     "expires_at": {
       "$ref": "../common.v1.json#/$defs/timestamp"

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.0 — 2026-10-17
+
+Architecture rule: everything between the borrower side and the institution side goes through the interface
+API. No direct calls, database connections or storage access between them.
+
+- `document_upload.response.upload_url` is now an interface endpoint,
+  `PUT /integration/v1/deal-documents/uploads/{upload_id}/content`, never a storage URL. The borrower side PUTs
+  the raw bytes there, signed over the bytes with the same scheme and keys as the calls. Enforced by pattern.
+- `document_complete`: the institution checks the hash against the bytes it received on that endpoint.
+- Nothing implemented the 1.5.0 storage-URL behaviour yet, so no deployed side breaks.
+
 ## 1.5.0 — 2026-10-17
 
 Reusing documents the borrower already holds. When a bank requests a document, the borrower either shares a

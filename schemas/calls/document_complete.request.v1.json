@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contract.ficium.net/schemas/calls/document_complete.request.v1.json",
   "title": "POST /integration/v1/deal-documents/uploads/{upload_id}/complete request body",
-  "description": "Borrower confirms the bytes are uploaded. The institution checks the stored file's hash against sha256 before marking the item received.",
+  "description": "Borrower confirms the upload. The institution checks sha256 against the bytes it received on the content endpoint before marking the item received.",
   "type": "object",
   "additionalProperties": false,
   "required": [
