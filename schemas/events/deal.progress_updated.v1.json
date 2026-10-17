@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/events/deal.progress_updated.v1.json",
+  "title": "A deal's progress changed",
+  "description": "Phase 2: only for deals the borrower accepted. Full state, not a diff: the receiver replaces what it holds. Only stages the institution shows to borrowers. aggregate_id is the pipeline_id. Replaces pipeline.stage_advanced, which was never emitted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pipeline_id",
+    "request_id",
+    "bid_id",
+    "status",
+    "deal",
+    "stages",
+    "updated_at"
+  ],
+  "properties": {
+    "pipeline_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "request_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "bid_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "withdrawn",
+        "declined"
+      ]
+    },
+    "deal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "rate",
+        "term_months"
+      ],
+      "properties": {
+        "amount": {
+          "$ref": "../common.v1.json#/$defs/amount"
+        },
+        "rate": {
+          "$ref": "../common.v1.json#/$defs/rate"
+        },
+        "term_months": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600
+        }
+      }
+    },
+    "started_at": {
+      "oneOf": [
+        {
+          "$ref": "../common.v1.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "completed_at": {
+      "oneOf": [
+        {
+          "$ref": "../common.v1.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stages": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "position",
+          "label",
+          "status"
+        ],
+        "properties": {
+          "position": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "The borrower-facing label"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "awaiting_approval",
+              "completed",
+              "skipped",
+              "blocked"
+            ]
+          },
+          "started_at": {
+            "oneOf": [
+              {
+                "$ref": "../common.v1.json#/$defs/timestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "completed_at": {
+            "oneOf": [
+              {
+                "$ref": "../common.v1.json#/$defs/timestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "due_at": {
+            "oneOf": [
+              {
+                "$ref": "../common.v1.json#/$defs/timestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "updated_at": {
+      "$ref": "../common.v1.json#/$defs/timestamp"
+    }
+  }
+}

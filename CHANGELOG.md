@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.7.0 — 2026-10-17
+
+No direct links between the borrower app and the portal: the loan tracker now runs on events.
+
+- Event `deal.progress_updated` (institution → borrower): a deal's full progress (status, agreed terms,
+  borrower-visible stages with their borrower-facing labels and dates), sent whenever it changes. Full state, so
+  a missed or reordered event can't leave the borrower side wrong. Replaces the tracker's direct call to the
+  portal, which sent the borrower's account id.
+- `pipeline.stage_advanced` is deprecated: never emitted, and a per-stage delta can't rebuild the tracker. It
+  stays valid in v1 and will be removed in v2.
+- New event type: receivers ship support before senders emit it.
+
 ## 1.6.0 — 2026-10-17
 
 Architecture rule: everything between the borrower side and the institution side goes through the interface

@@ -31,7 +31,8 @@
         "bid.withdrawn",
         "pipeline.stage_advanced",
         "market.intelligence",
-        "deal.documents_updated"
+        "deal.documents_updated",
+        "deal.progress_updated"
       ]
     },
     "version": {
@@ -317,6 +318,28 @@
         "properties": {
           "data": {
             "$ref": "events/deal.documents_updated.v1.json"
+          },
+          "source": {
+            "const": "institution"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "deal.progress_updated"
+          },
+          "version": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "$ref": "events/deal.progress_updated.v1.json"
           },
           "source": {
             "const": "institution"
