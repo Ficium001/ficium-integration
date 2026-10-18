@@ -1,0 +1,48 @@
+{
+  "description": "aggregate only: no institution identity",
+  "envelope": {
+    "id": "evt_01J9FIXTURE0601",
+    "type": "market.intelligence",
+    "version": 1,
+    "source": "institution",
+    "occurred_at": "2026-10-18T09:00:00Z",
+    "aggregate_id": "market",
+    "sequence": 1,
+    "data": {
+      "as_of": "2026-10-18",
+      "rates": [
+        {
+          "product_code": "mortgage",
+          "bid_count": 12,
+          "request_count": 5,
+          "min_rate": 0.0625,
+          "max_rate": 0.0795,
+          "avg_rate": 0.0711,
+          "p25_rate": 0.068,
+          "p75_rate": 0.074,
+          "institution_id": "00000000-0000-4000-8000-000000000060"
+        }
+      ],
+      "outcomes": [
+        {
+          "product_code": "mortgage",
+          "total_acceptances": 2,
+          "avg_winning_rate": 0.0675,
+          "min_winning_rate": 0.065,
+          "max_winning_rate": 0.07,
+          "avg_winning_amount": 2500000,
+          "avg_winning_term_months": 240,
+          "rate_vs_market_avg": -0.0036
+        }
+      ],
+      "competitiveness": [
+        {
+          "product_code": "mortgage",
+          "active_institutions": 3,
+          "avg_bids_per_request": 2.4,
+          "max_bids_per_request": 4
+        }
+      ]
+    }
+  }
+}

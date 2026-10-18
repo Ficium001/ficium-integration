@@ -1,11 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contract.ficium.net/schemas/events/market.intelligence.v1.json",
-  "title": "Daily market aggregates for the borrower side",
+  "title": "Market intelligence snapshot",
+  "description": "Aggregate, anonymous market data from the institution side (last 90 days), for the borrower side's adviser. Full state: the receiver replaces what it holds. No institution, request or borrower identity. Rates are decimal fractions.",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "as_of",
-    "rates"
+    "rates",
+    "outcomes",
+    "competitiveness"
   ],
   "properties": {
     "as_of": {
@@ -13,42 +17,119 @@
     },
     "rates": {
       "type": "array",
+      "maxItems": 50,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
-          "product_code"
+          "product_code",
+          "bid_count",
+          "request_count",
+          "min_rate",
+          "max_rate",
+          "avg_rate"
         ],
         "properties": {
           "product_code": {
             "$ref": "../common.v1.json#/$defs/product_type"
+          },
+          "bid_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "request_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "min_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "max_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "avg_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "p25_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "p75_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
           }
         }
       }
     },
     "outcomes": {
       "type": "array",
+      "maxItems": 50,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
-          "product_code"
+          "product_code",
+          "total_acceptances",
+          "avg_winning_rate"
         ],
         "properties": {
           "product_code": {
             "$ref": "../common.v1.json#/$defs/product_type"
+          },
+          "total_acceptances": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "avg_winning_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "min_winning_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "max_winning_rate": {
+            "$ref": "../common.v1.json#/$defs/rate"
+          },
+          "avg_winning_amount": {
+            "$ref": "../common.v1.json#/$defs/amount"
+          },
+          "avg_winning_term_months": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 600
+          },
+          "rate_vs_market_avg": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1,
+            "description": "Average winning rate minus the market average, as a decimal fraction (negative = cheaper)"
           }
         }
       }
     },
     "competitiveness": {
       "type": "array",
+      "maxItems": 50,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
-          "product_code"
+          "product_code",
+          "active_institutions",
+          "avg_bids_per_request"
         ],
         "properties": {
           "product_code": {
             "$ref": "../common.v1.json#/$defs/product_type"
+          },
+          "active_institutions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "avg_bids_per_request": {
+            "type": "number",
+            "minimum": 0
+          },
+          "max_bids_per_request": {
+            "type": "integer",
+            "minimum": 0
           }
         }
       }
