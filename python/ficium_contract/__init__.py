@@ -17,7 +17,7 @@ from typing import Any, Iterable
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 
 SIGNATURE_HEADER = "Ficium-Signature"
 DEFAULT_TOLERANCE_SECONDS = 300
