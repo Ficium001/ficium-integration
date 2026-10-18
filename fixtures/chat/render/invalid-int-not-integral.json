@@ -1,0 +1,8 @@
+{
+  "description": "int params must be whole numbers",
+  "sender_side": "institution",
+  "template_code": "a.processing_days",
+  "params": {
+    "days": 5.5
+  }
+}

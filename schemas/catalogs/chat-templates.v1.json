@@ -1,0 +1,199 @@
+{
+  "catalog": "chat-templates",
+  "version": 1,
+  "description": "Structured chat messages both sides may send. Data, not a schema: render with render_chat_message (Python) / renderChatMessage (TypeScript). A receiver re-renders a structured chat.message and rejects it if the body differs.",
+  "templates": [
+    {
+      "code": "a.docs_list",
+      "sender_side": "institution",
+      "label": "List required documents",
+      "body_template": "We will need the following: {documents}.",
+      "params_schema": {
+        "documents": {
+          "type": "string_list",
+          "max_len": 60,
+          "max_items": 12
+        }
+      },
+      "sort_order": 10
+    },
+    {
+      "code": "a.processing_days",
+      "sender_side": "institution",
+      "label": "State processing time",
+      "body_template": "Approval typically takes {days} business days.",
+      "params_schema": {
+        "days": {
+          "max": 365,
+          "min": 1,
+          "type": "int"
+        }
+      },
+      "sort_order": 20
+    },
+    {
+      "code": "a.rate_final",
+      "sender_side": "institution",
+      "label": "Rate is final",
+      "body_template": "The offered rate is final.",
+      "params_schema": {},
+      "sort_order": 30
+    },
+    {
+      "code": "a.rate_negotiable",
+      "sender_side": "institution",
+      "label": "Rate may improve",
+      "body_template": "The rate may be improved subject to review.",
+      "params_schema": {},
+      "sort_order": 31
+    },
+    {
+      "code": "a.early_rep_none",
+      "sender_side": "institution",
+      "label": "No early repayment penalty",
+      "body_template": "There is no penalty for early repayment.",
+      "params_schema": {},
+      "sort_order": 40
+    },
+    {
+      "code": "a.early_rep_fee",
+      "sender_side": "institution",
+      "label": "Early repayment fee applies",
+      "body_template": "Early repayment carries a fee of {percent}% of the outstanding balance.",
+      "params_schema": {
+        "percent": {
+          "max": 100,
+          "min": 0,
+          "type": "decimal"
+        }
+      },
+      "sort_order": 41
+    },
+    {
+      "code": "a.fees_breakdown",
+      "sender_side": "institution",
+      "label": "Break down the fees",
+      "body_template": "Fee breakdown: {fees}.",
+      "params_schema": {
+        "fees": {
+          "type": "label_amount_list",
+          "max_items": 12
+        }
+      },
+      "sort_order": 50
+    },
+    {
+      "code": "a.disbursement_days",
+      "sender_side": "institution",
+      "label": "State disbursement time",
+      "body_template": "Funds are disbursed within {days} business days of approval.",
+      "params_schema": {
+        "days": {
+          "max": 365,
+          "min": 1,
+          "type": "int"
+        }
+      },
+      "sort_order": 60
+    },
+    {
+      "code": "a.insurance_yes",
+      "sender_side": "institution",
+      "label": "Insurance required",
+      "body_template": "Insurance is required for this facility.",
+      "params_schema": {},
+      "sort_order": 70
+    },
+    {
+      "code": "a.insurance_no",
+      "sender_side": "institution",
+      "label": "Insurance not required",
+      "body_template": "Insurance is not required for this facility.",
+      "params_schema": {},
+      "sort_order": 71
+    },
+    {
+      "code": "a.conditions_note",
+      "sender_side": "institution",
+      "label": "Clarify a condition",
+      "body_template": "Clarification on conditions: {note}.",
+      "params_schema": {
+        "note": {
+          "type": "enum",
+          "values": [
+            "salary_domiciliation",
+            "guarantor_required",
+            "collateral_valuation",
+            "min_tenure",
+            "employment_confirmation"
+          ]
+        }
+      },
+      "sort_order": 80
+    },
+    {
+      "code": "q.docs_required",
+      "sender_side": "borrower",
+      "label": "What documents will you need?",
+      "body_template": "What documents will you need from me?",
+      "params_schema": {},
+      "sort_order": 10
+    },
+    {
+      "code": "q.processing_time",
+      "sender_side": "borrower",
+      "label": "How long does approval take?",
+      "body_template": "How long does approval take?",
+      "params_schema": {},
+      "sort_order": 20
+    },
+    {
+      "code": "q.rate_negotiable",
+      "sender_side": "borrower",
+      "label": "Is this rate negotiable?",
+      "body_template": "Is the offered rate negotiable?",
+      "params_schema": {},
+      "sort_order": 30
+    },
+    {
+      "code": "q.early_repayment",
+      "sender_side": "borrower",
+      "label": "Any early repayment penalty?",
+      "body_template": "Is there a penalty for early repayment?",
+      "params_schema": {},
+      "sort_order": 40
+    },
+    {
+      "code": "q.fees_breakdown",
+      "sender_side": "borrower",
+      "label": "Can you break down the fees?",
+      "body_template": "Can you break down the fees on this offer?",
+      "params_schema": {},
+      "sort_order": 50
+    },
+    {
+      "code": "q.disbursement",
+      "sender_side": "borrower",
+      "label": "How soon are funds disbursed?",
+      "body_template": "How soon would funds be disbursed after approval?",
+      "params_schema": {},
+      "sort_order": 60
+    },
+    {
+      "code": "q.insurance",
+      "sender_side": "borrower",
+      "label": "Is insurance required?",
+      "body_template": "Is insurance required for this facility?",
+      "params_schema": {},
+      "sort_order": 70
+    },
+    {
+      "code": "q.conditions",
+      "sender_side": "borrower",
+      "label": "Can you clarify the conditions?",
+      "body_template": "Can you clarify the conditions attached to this offer?",
+      "params_schema": {},
+      "sort_order": 80
+    }
+  ]
+}

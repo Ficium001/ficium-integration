@@ -94,3 +94,30 @@ def test_rotation_accepts_old_and_new_key():
     body = b"{}"
     old = fc.sign(body, b"old", 5000)
     fc.verify(old, body, [b"new", b"old"], now=5000)
+
+
+# ── chat templates (1.9) ─────────────────────────────────────────────────────
+RENDER = sorted((FIX / "chat/render").glob("*.json"))
+
+
+@pytest.mark.parametrize("path", [p for p in RENDER if p.name.startswith("valid-")], ids=lambda p: p.stem)
+def test_chat_render_valid(path):
+    case = _load(path)
+    body, _ = fc.render_chat_message(case["template_code"], case["params"], case["sender_side"])
+    assert body == case["body"]
+
+
+@pytest.mark.parametrize("path", [p for p in RENDER if p.name.startswith("invalid-")], ids=lambda p: p.stem)
+def test_chat_render_invalid(path):
+    case = _load(path)
+    with pytest.raises(fc.ContractError):
+        fc.render_chat_message(case["template_code"], case["params"], case["sender_side"])
+
+
+def test_chat_catalog_is_complete_and_renders():
+    codes = {t["code"] for t in fc.chat_templates()}
+    assert len(codes) == 19
+    assert {t["sender_side"] for t in fc.chat_templates("borrower")} == {"borrower"}
+    for t in fc.chat_templates():
+        if not t["params_schema"]:  # every parameterless template renders to itself
+            assert fc.render_chat_message(t["code"], {}, t["sender_side"])[0] == t["body_template"]

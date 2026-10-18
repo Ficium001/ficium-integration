@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.9.0 — 2026-10-18
+
+Chat between borrowers and institutions through the contract only (it used to be read and written in the borrower
+database by the portal).
+
+- `schemas/catalogs/chat-templates.v1.json`: the 19 structured message templates, shared by both sides (data, not a
+  schema; both loaders skip `catalogs/`).
+- `render_chat_message` (Python) / `renderChatMessage` (TypeScript): validate params (typed, bounded, unknown params
+  dropped, every placeholder filled) and render. Same algorithm, same fixtures (`fixtures/chat/render`). Decimals render
+  with up to 4 places and no trailing zeros, so `2` is `2` on both sides (Python used to print `2.0`).
+- `chat.message`: a receiver re-renders a structured message and rejects a body that differs; free text only for the
+  accepted institution; never a person's identity.
+
 ## 1.8.0 — 2026-10-17
 
 - Event `request.declined` (institution → borrower): one institution declined to make an offer. Only that

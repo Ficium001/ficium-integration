@@ -33,7 +33,8 @@
         "string",
         "null"
       ],
-      "maxLength": 100
+      "maxLength": 100,
+      "description": "A code from catalogs/chat-templates.v1.json; null for free text"
     },
     "params": {
       "type": "object"
@@ -67,5 +68,6 @@
         ]
       }
     ]
-  }
+  },
+  "description": "A message in the per-lender thread of a request (thread = request_id + institution_id). Structured messages carry template_code + params, and body must equal render_chat_message(template_code, params, sender_side); receivers re-render and reject a mismatch. Free text (template_code null) is only for the institution whose offer the borrower accepted. Never carries a person's identity: no borrower account id, no staff id."
 }

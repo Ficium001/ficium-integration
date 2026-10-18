@@ -1,0 +1,10 @@
+{
+  "description": "a borrower cannot send an institution template",
+  "sender_side": "borrower",
+  "template_code": "a.docs_list",
+  "params": {
+    "documents": [
+      "NIC"
+    ]
+  }
+}

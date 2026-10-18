@@ -1,0 +1,8 @@
+{
+  "sender_side": "institution",
+  "template_code": "a.processing_days",
+  "params": {
+    "days": "5"
+  },
+  "body": "Approval typically takes 5 business days."
+}
