@@ -33,7 +33,8 @@
         "market.intelligence",
         "deal.documents_updated",
         "deal.progress_updated",
-        "request.declined"
+        "request.declined",
+        "request.window_closed"
       ]
     },
     "version": {
@@ -363,6 +364,28 @@
         "properties": {
           "data": {
             "$ref": "events/request.declined.v1.json"
+          },
+          "source": {
+            "const": "institution"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "request.window_closed"
+          },
+          "version": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "$ref": "events/request.window_closed.v1.json"
           },
           "source": {
             "const": "institution"

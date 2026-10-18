@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.0 — 2026-10-18
+
+The last direct links between the borrower app and the portal move into the contract.
+
+- Event `request.window_closed` (institution → borrower): a request's bidding window closed, with `offers` /
+  `no_offers` and the offer count. Replaces the institution database calling the borrower app over HTTP with a
+  shared secret.
+- `market.intelligence` is now fully specified (it had open items and no emitter): rates as decimal fractions,
+  explicit fields, no institution identity. Replaces the borrower app fetching it from the portal with a shared secret.
+- New event type: receivers ship support before senders emit it.
+
 ## 1.9.1 — 2026-10-18
 
 - Fix: the repo consistency check required a schema `$id` on the chat template catalog, which is data, not a schema;

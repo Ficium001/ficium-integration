@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/events/request.window_closed.v1.json",
+  "title": "A request's bidding window closed",
+  "description": "The institution side closed a request's bidding window. 'offers': the borrower can now choose; 'no_offers': nobody bid. Replaces the institution database calling the borrower app directly. aggregate_id is the request_id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "outcome",
+    "offer_count",
+    "closed_at"
+  ],
+  "properties": {
+    "request_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "offers",
+        "no_offers"
+      ]
+    },
+    "offer_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "closed_at": {
+      "$ref": "../common.v1.json#/$defs/timestamp"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "no_offers"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "offer_count": {
+            "const": 0
+          }
+        }
+      }
+    }
+  ]
+}

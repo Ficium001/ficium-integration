@@ -1,0 +1,15 @@
+{
+  "id": "evt_01J9FIXTURE0501",
+  "type": "request.window_closed",
+  "version": 1,
+  "source": "institution",
+  "occurred_at": "2026-10-18T09:00:00Z",
+  "aggregate_id": "00000000-0000-4000-8000-000000000001",
+  "sequence": 2,
+  "data": {
+    "request_id": "00000000-0000-4000-8000-000000000001",
+    "outcome": "no_offers",
+    "offer_count": 0,
+    "closed_at": "2026-10-18T09:00:00Z"
+  }
+}
