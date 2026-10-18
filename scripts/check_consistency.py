@@ -18,6 +18,12 @@ if pkg.split(".")[0] != "1":
     errors.append("major version must stay 1 while only v1 schemas exist")
 
 for f in (ROOT / "schemas").rglob("*.json"):
+    if f.relative_to(ROOT / "schemas").parts[0] == "catalogs":
+        # Data shipped with the schemas (e.g. chat templates), not schemas: no $id. Check its shape instead.
+        doc = json.loads(f.read_text())
+        if not (isinstance(doc.get("catalog"), str) and isinstance(doc.get("version"), int)):
+            errors.append(f"{f}: a catalog needs 'catalog' (name) and 'version' (int)")
+        continue
     sid = json.loads(f.read_text()).get("$id")
     want = BASE + str(f.relative_to(ROOT / "schemas"))
     if sid != want:
