@@ -1,0 +1,10 @@
+{
+  "description": "max_len",
+  "sender_side": "institution",
+  "template_code": "a.docs_list",
+  "params": {
+    "documents": [
+      "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ]
+  }
+}

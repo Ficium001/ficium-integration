@@ -1,0 +1,8 @@
+{
+  "description": "bounds are enforced",
+  "sender_side": "institution",
+  "template_code": "a.early_rep_fee",
+  "params": {
+    "percent": 99999
+  }
+}

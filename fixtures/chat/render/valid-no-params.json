@@ -1,0 +1,6 @@
+{
+  "sender_side": "borrower",
+  "template_code": "q.fees_breakdown",
+  "params": {},
+  "body": "Can you break down the fees on this offer?"
+}

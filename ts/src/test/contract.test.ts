@@ -60,3 +60,25 @@ test("verify rejects tampering, staleness, wrong key, garbage, no keys", () => {
 test("rotation accepts old and new key", () => {
   fc.verify(fc.sign("{}", "old", 5000), "{}", ["new", "old"], 5000);
 });
+
+
+// ── chat templates (1.9): the same fixtures as Python ─────────────────────────
+for (const f of files("chat/render")) {
+  const c = load(join(fix, "chat/render", f));
+  test(`chat render ${f}`, () => {
+    if (f.startsWith("valid-")) {
+      assert.equal(fc.renderChatMessage(c.template_code, c.params, c.sender_side).body, c.body);
+    } else {
+      assert.throws(() => fc.renderChatMessage(c.template_code, c.params, c.sender_side), fc.ContractError);
+    }
+  });
+}
+
+test("chat catalog", () => {
+  assert.equal(fc.chatTemplates().length, 19);
+  for (const t of fc.chatTemplates()) {
+    if (!Object.keys(t.params_schema).length) {
+      assert.equal(fc.renderChatMessage(t.code, {}, t.sender_side).body, t.body_template);
+    }
+  }
+});

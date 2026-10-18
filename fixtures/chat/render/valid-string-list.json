@@ -1,0 +1,12 @@
+{
+  "sender_side": "institution",
+  "template_code": "a.docs_list",
+  "params": {
+    "documents": [
+      " POA ",
+      "NIC",
+      ""
+    ]
+  },
+  "body": "We will need the following: POA, NIC."
+}

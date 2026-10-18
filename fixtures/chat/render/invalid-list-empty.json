@@ -1,0 +1,10 @@
+{
+  "description": "at least one entry",
+  "sender_side": "institution",
+  "template_code": "a.docs_list",
+  "params": {
+    "documents": [
+      "  "
+    ]
+  }
+}

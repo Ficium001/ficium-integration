@@ -1,0 +1,8 @@
+{
+  "description": "enum values are fixed",
+  "sender_side": "institution",
+  "template_code": "a.conditions_note",
+  "params": {
+    "note": "anything"
+  }
+}

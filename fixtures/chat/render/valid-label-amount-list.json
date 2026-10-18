@@ -1,0 +1,11 @@
+{
+  "sender_side": "institution",
+  "template_code": "a.fees_breakdown",
+  "params": {
+    "fees": [
+      "Processing: MUR 5,000",
+      "Valuation: MUR 3,500"
+    ]
+  },
+  "body": "Fee breakdown: Processing: MUR 5,000, Valuation: MUR 3,500."
+}

@@ -1,0 +1,8 @@
+{
+  "sender_side": "institution",
+  "template_code": "a.rate_final",
+  "params": {
+    "injected": "{x}"
+  },
+  "body": "The offered rate is final."
+}

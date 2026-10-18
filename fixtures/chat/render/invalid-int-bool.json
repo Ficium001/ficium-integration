@@ -1,0 +1,8 @@
+{
+  "description": "booleans are not numbers",
+  "sender_side": "institution",
+  "template_code": "a.processing_days",
+  "params": {
+    "days": true
+  }
+}
