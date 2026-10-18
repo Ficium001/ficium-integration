@@ -32,7 +32,8 @@
         "pipeline.stage_advanced",
         "market.intelligence",
         "deal.documents_updated",
-        "deal.progress_updated"
+        "deal.progress_updated",
+        "request.declined"
       ]
     },
     "version": {
@@ -340,6 +341,28 @@
         "properties": {
           "data": {
             "$ref": "events/deal.progress_updated.v1.json"
+          },
+          "source": {
+            "const": "institution"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "request.declined"
+          },
+          "version": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "$ref": "events/request.declined.v1.json"
           },
           "source": {
             "const": "institution"

@@ -1,0 +1,18 @@
+{
+  "description": "a decline is anonymous: no institution identity",
+  "envelope": {
+    "id": "evt_01J9FIXTURE0401",
+    "type": "request.declined",
+    "version": 1,
+    "source": "institution",
+    "occurred_at": "2026-10-17T09:00:00Z",
+    "aggregate_id": "00000000-0000-4000-8000-000000000001",
+    "sequence": 1,
+    "data": {
+      "request_id": "00000000-0000-4000-8000-000000000001",
+      "reason": "Outside our lending criteria for this product.",
+      "declined_at": "2026-10-17T09:00:00Z",
+      "institution_id": "00000000-0000-4000-8000-000000000060"
+    }
+  }
+}

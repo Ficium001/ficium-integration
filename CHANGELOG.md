@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.0 — 2026-10-17
+
+- Event `request.declined` (institution → borrower): one institution declined to make an offer. Only that
+  institution stops seeing the request; it stays open to every other institution. Anonymous (no institution
+  identity). Replaces the portal writing into the borrower database, which also closed the borrower's request
+  and cancelled it for every institution on the first decline.
+- New event type: receivers ship support before senders emit it.
+
 ## 1.7.0 — 2026-10-17
 
 No direct links between the borrower app and the portal: the loan tracker now runs on events.

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.ficium.net/schemas/events/request.declined.v1.json",
+  "title": "An institution declined a request",
+  "description": "One institution declined to make an offer. Only that institution stops seeing the request; the request stays open to every other institution and its status is unchanged. Anonymous: it never says which institution. aggregate_id is the request_id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "declined_at"
+  ],
+  "properties": {
+    "request_id": {
+      "$ref": "../common.v1.json#/$defs/uuid"
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 500,
+      "description": "Written for the borrower, if the institution gave one"
+    },
+    "declined_at": {
+      "$ref": "../common.v1.json#/$defs/timestamp"
+    }
+  }
+}

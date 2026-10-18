@@ -1,0 +1,17 @@
+{
+  "description": "reason is at most 500 characters",
+  "envelope": {
+    "id": "evt_01J9FIXTURE0401",
+    "type": "request.declined",
+    "version": 1,
+    "source": "institution",
+    "occurred_at": "2026-10-17T09:00:00Z",
+    "aggregate_id": "00000000-0000-4000-8000-000000000001",
+    "sequence": 1,
+    "data": {
+      "request_id": "00000000-0000-4000-8000-000000000001",
+      "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "declined_at": "2026-10-17T09:00:00Z"
+    }
+  }
+}
