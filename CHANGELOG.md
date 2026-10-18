@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.1 — 2026-10-18
+
+- Fix: the repo consistency check required a schema `$id` on the chat template catalog, which is data, not a schema;
+  it now checks catalogs for their own shape. v1.9.0 was tagged with that check red: use 1.9.1. No contract change.
+
 ## 1.9.0 — 2026-10-18
 
 Chat between borrowers and institutions through the contract only (it used to be read and written in the borrower
